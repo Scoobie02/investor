@@ -26,8 +26,8 @@ public class SafeInvestmentTest {
     @Test
     public void safeInvestmentParamsTest() {
 
-        SafeInvestmentProcessor safeInvestmentProcessor = new SafeInvestmentProcessor();
-        Map<FoundKind, BigDecimal> shareParams = safeInvestmentProcessor.getShareParams();
+        SafeInvestment safeInvestment = new SafeInvestment();
+        Map<FoundKind, BigDecimal> shareParams = safeInvestment.getShareParams();
 
         BigDecimal sum = shareParams.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
 

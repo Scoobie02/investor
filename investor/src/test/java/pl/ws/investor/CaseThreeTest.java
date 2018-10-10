@@ -9,7 +9,7 @@ import pl.ws.investor.processor.InvestmentProcessor;
 import pl.ws.investor.domain.Found;
 import pl.ws.investor.domain.FoundKind;
 import pl.ws.investor.domain.PartialInvestment;
-import pl.ws.investor.processor.SafeInvestmentProcessor;
+import pl.ws.investor.processor.SafeInvestment;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -40,10 +40,10 @@ public class CaseThreeTest extends AbstractTest {
     public void safeInvestmentInvestedAmountTest(){
         List<Found> testFounds = founds.stream().filter(p->FoundKind.POLISH.equals(p.getFoundKind())).collect(Collectors.toList());
 
-        SafeInvestmentProcessor safeInvestmentProcessor = new SafeInvestmentProcessor();
-        BigDecimal polishPercentParam = safeInvestmentProcessor.getShareParams().get(FoundKind.POLISH).divide(BigDecimal.valueOf(100));
+        SafeInvestment safeInvestment = new SafeInvestment();
+        BigDecimal polishPercentParam = safeInvestment.getShareParams().get(FoundKind.POLISH).divide(BigDecimal.valueOf(100));
 
-        InvestmentResult investmentResult = safeInvestmentProcessor.processInvest(testFounds, investedAmount);
+        InvestmentResult investmentResult = safeInvestment.processInvest(testFounds, investedAmount);
         BigDecimal investmentsSum = investmentResult.getPartialInvestments().stream().map(PartialInvestment::getPartialAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
 
         assertThat(polishPercentParam.multiply(investedAmount), Matchers.comparesEqualTo(investmentsSum));
@@ -54,10 +54,10 @@ public class CaseThreeTest extends AbstractTest {
 
         List<Found> testFounds = founds.stream().filter(p->FoundKind.POLISH.equals(p.getFoundKind())).collect(Collectors.toList());
 
-        SafeInvestmentProcessor safeInvestmentProcessor = new SafeInvestmentProcessor();
-        BigDecimal polishPercentParam = safeInvestmentProcessor.getShareParams().get(FoundKind.POLISH);
+        SafeInvestment safeInvestment = new SafeInvestment();
+        BigDecimal polishPercentParam = safeInvestment.getShareParams().get(FoundKind.POLISH);
 
-        InvestmentResult investmentResult = safeInvestmentProcessor.processInvest(testFounds, investedAmount);
+        InvestmentResult investmentResult = safeInvestment.processInvest(testFounds, investedAmount);
         BigDecimal percentSum = investmentResult.getPartialInvestments().stream().map(PartialInvestment::getPercent).reduce(BigDecimal.ZERO, BigDecimal::add);
 
         assertThat(polishPercentParam, Matchers.comparesEqualTo(percentSum));
