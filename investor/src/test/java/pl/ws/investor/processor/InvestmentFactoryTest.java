@@ -2,31 +2,35 @@ package pl.ws.investor.processor;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import pl.ws.investor.investment.AggressiveInvestment;
+import pl.ws.investor.investment.BalancedInvestment;
+import pl.ws.investor.investment.Investment;
+import pl.ws.investor.investment.SafeInvestment;
 
 import static org.junit.Assert.*;
 
-public class InvestmentFactoryTest {
+public class InvestmentFactoryTest extends AbstractProcessorTest {
 
     @Test
     public void provideSafeDivider() {
-        Investment investment = InvestmentFactory.provideInvestmentProcessor(InvestmentStyle.SAFE);
+        Investment investment = investmentFactory.provideInvestmentProcessor(InvestmentStyle.SAFE);
         assertThat(investment, Matchers.instanceOf(SafeInvestment.class));
     }
 
     @Test
     public void provideBalancedDivider() {
-        Investment investment = InvestmentFactory.provideInvestmentProcessor(InvestmentStyle.BALANCED);
+        Investment investment = investmentFactory.provideInvestmentProcessor(InvestmentStyle.BALANCED);
         assertThat(investment, Matchers.instanceOf(BalancedInvestment.class));
     }
 
     @Test
     public void provideAggressiveDivider() {
-        Investment investment = InvestmentFactory.provideInvestmentProcessor(InvestmentStyle.AGGRESSIVE);
+        Investment investment = investmentFactory.provideInvestmentProcessor(InvestmentStyle.AGGRESSIVE);
         assertThat(investment, Matchers.instanceOf(AggressiveInvestment.class));
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void unsupportedDivideOptionTest() {
-        InvestmentFactory.provideInvestmentProcessor(InvestmentStyle.UNSUPPORTED);
+        investmentFactory.provideInvestmentProcessor(InvestmentStyle.UNSUPPORTED);
     }
 }

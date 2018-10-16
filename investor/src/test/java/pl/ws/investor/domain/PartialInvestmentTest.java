@@ -18,30 +18,6 @@ public class PartialInvestmentTest {
     }
 
     @Test
-    public void getFound(){
-        Found found = new Found(1L, FoundKind.FOREIGN, "Fundusz Zagraniczny 1");
-        partialInvestment.setFound(found);
-
-        assertEquals(found, partialInvestment.getFound());
-    }
-
-    @Test
-    public void getPartialAmount(){
-        BigDecimal partialAmountValue = new BigDecimal(102);
-        partialInvestment.setPartialAmount(partialAmountValue);
-
-        assertThat(partialAmountValue, Matchers.comparesEqualTo(partialInvestment.getPartialAmount()));
-    }
-
-    @Test
-    public void getPercent(){
-        BigDecimal percentValue = new BigDecimal(6.66);
-        partialInvestment.setPercent(percentValue);
-
-        assertThat(percentValue, Matchers.comparesEqualTo(partialInvestment.getPercent()));
-    }
-
-    @Test
     public void partialFoundTest() {
 
         Found found = new Found(567L, FoundKind.FOREIGN, "Fundusz Zagraniczny 3");

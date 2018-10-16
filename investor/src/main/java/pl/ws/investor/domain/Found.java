@@ -12,30 +12,16 @@ public class Found {
         this.name = name;
     }
 
-    public Found() {
-    }
-
-    public Long getId() {
+    Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getName() {
+    String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public FoundKind getFoundKind() {
         return foundKind;
-    }
-
-    public void setFoundKind(FoundKind foundKind) {
-        this.foundKind = foundKind;
     }
 }

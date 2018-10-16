@@ -1,6 +1,7 @@
 package pl.ws.investor.domain;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class PartialInvestment {
 
@@ -8,7 +9,7 @@ public class PartialInvestment {
     private BigDecimal partialAmount;
     private BigDecimal percent;
 
-    public PartialInvestment() {
+    PartialInvestment() {
     }
 
     public PartialInvestment(Found found, BigDecimal partialAmount, BigDecimal percent) {
@@ -37,7 +38,22 @@ public class PartialInvestment {
         return percent;
     }
 
-    public void setPercent(BigDecimal percent) {
+    void setPercent(BigDecimal percent) {
         this.percent = percent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PartialInvestment)) return false;
+        PartialInvestment that = (PartialInvestment) o;
+        return Objects.equals(found, that.found) &&
+                Objects.equals(partialAmount, that.partialAmount) &&
+                Objects.equals(percent, that.percent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(found, partialAmount, percent);
     }
 }

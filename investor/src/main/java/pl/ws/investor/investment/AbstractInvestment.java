@@ -1,4 +1,4 @@
-package pl.ws.investor.processor;
+package pl.ws.investor.investment;
 
 import org.apache.commons.collections4.CollectionUtils;
 import pl.ws.investor.domain.Found;
@@ -11,7 +11,7 @@ import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
-abstract class AbstractInvestmentProcessor implements Investment {
+abstract class AbstractInvestment implements Investment {
 
     Map<FoundKind, BigDecimal> shareParams = new HashMap<>();
 
@@ -83,7 +83,7 @@ abstract class AbstractInvestmentProcessor implements Investment {
         return investedAmount.remainder(shareParams.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add));
     }
 
-    public Map<FoundKind, BigDecimal> getShareParams() {
+    Map<FoundKind, BigDecimal> getShareParams() {
         return shareParams;
     }
 }
