@@ -1,27 +1,22 @@
 package pl.ws.investor.processor;
 
 import org.junit.Before;
-import pl.ws.investor.investment.AggressiveInvestment;
-import pl.ws.investor.investment.BalancedInvestment;
 import pl.ws.investor.investment.Investment;
-import pl.ws.investor.investment.SafeInvestment;
+import pl.ws.investor.investment.*;
+import pl.ws.investor.investmentFactory.AbstractFactoryTest;
+import pl.ws.investor.investmentFactory.InvestmentFactory;
+import pl.ws.investor.investmentFactory.InvestmentFactoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class AbstractProcessorTest {
+class AbstractProcessorTest extends AbstractFactoryTest {
 
-    InvestmentFactory investmentFactory;
     InvestmentProcessor investmentProcessor;
 
     @Before
     public void setUp(){
-        List<Investment> investments = new ArrayList<>(3);
-        investments.add(new SafeInvestment());
-        investments.add(new BalancedInvestment());
-        investments.add(new AggressiveInvestment());
-
-        investmentFactory = new InvestmentFactory(investments);
+        super.setUp();
         investmentProcessor = new InvestmentProcessor(investmentFactory);
     }
 

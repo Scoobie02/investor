@@ -1,11 +1,7 @@
 package pl.ws.investor.investment;
 
 import org.apache.commons.collections4.CollectionUtils;
-import pl.ws.investor.domain.Found;
-import pl.ws.investor.domain.FoundKind;
-import pl.ws.investor.domain.InvestmentResult;
-import pl.ws.investor.domain.PartialInvestment;
-
+import pl.ws.investor.domain.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;

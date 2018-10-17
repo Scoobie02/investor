@@ -1,7 +1,6 @@
 package pl.ws.investor.investment;
 
 import pl.ws.investor.domain.FoundKind;
-import pl.ws.investor.processor.InvestmentStyle;
 
 import java.math.BigDecimal;
 
@@ -14,7 +13,7 @@ public class SafeInvestment extends AbstractInvestment {
    }
 
     @Override
-    public InvestmentStyle getStyle() {
-        return InvestmentStyle.SAFE;
+    public InvestmentStyleType getStyle() {
+        return InvestmentStyleType.SAFE;
     }
 }

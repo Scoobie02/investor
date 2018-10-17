@@ -52,8 +52,4 @@ public class PartialInvestment {
                 Objects.equals(percent, that.percent);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(found, partialAmount, percent);
-    }
 }

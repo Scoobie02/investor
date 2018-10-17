@@ -30,9 +30,4 @@ public class InvestmentResult {
         return Objects.equals(partialInvestments, that.partialInvestments) &&
                 Objects.equals(unallocatedAmount, that.unallocatedAmount);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(partialInvestments, unallocatedAmount);
-    }
 }

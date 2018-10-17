@@ -4,6 +4,7 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import pl.ws.investor.domain.*;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,16 +12,16 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class SafeInvestmentTest extends AbstractInvestmentTest {
+public class SafeInvestmentTest {
 
     private final BigDecimal investedAmount = new BigDecimal(10000);
-
+    private List<Found> founds;
     private SafeInvestment safeInvestment;
 
     @Before
     public void setUp(){
         this.safeInvestment = new SafeInvestment();
-        caseOneAndTwoFounds();
+        founds = TestFoundsProvider.caseOneAndTwoFounds();
     }
 
     @Test
@@ -143,7 +144,7 @@ public class SafeInvestmentTest extends AbstractInvestmentTest {
 
     @Test
     public void safeInvestmentOptionTest(){
-        List<Found> founds = caseThreeFounds();
+        List<Found> founds = TestFoundsProvider.caseThreeFounds();
         InvestmentResult investmentResult = safeInvestment.processInvest(founds, new BigDecimal(10000));
         List<PartialInvestment> polishPartialInvestments = investmentResult.getPartialInvestments().stream().filter(p -> FoundKind.POLISH.equals(p.getFound().getFoundKind())).collect(Collectors.toList());
 
