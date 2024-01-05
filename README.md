@@ -13,17 +13,14 @@ Package can be provided into application without any impact to the rest part of 
 It contains unit tests and additional test cases.  
 
 ## Technologies
-* Java 8
-* JUnit 4
+* Java 21
+* JUnit 5
 
 ## Features
 List of ready features 
 * Divide invested amount of money to choose investments depends on provided share-params
 * Handling return unallocated money in result 
 
-TODOs for future development
-* Show input and output logs in tests
-* Handling error on missing investments in share-params
 
 ## License and Author
 
